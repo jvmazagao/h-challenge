@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {FaUtensils, FaConciergeBell, FaMoneyCheck, FaDiaspora} from 'react-icons/fa'
+import {useTheme} from '../../theme/hooks'
+import { FaUtensils, FaConciergeBell, FaMoneyCheck, FaDiaspora } from 'react-icons/fa';
 
 enum CardType {
     FOOD = 'utensils',
@@ -13,28 +14,44 @@ enum CardType {
 interface Props {
     type: CardType;
 }
-const CardIcon: React.FC<Props> = ({type}) => {
-    const factoryIcon = (type: string) => {
-        switch(type) {
-            case CardType.CREATED: 
-                return <FaMoneyCheck />
-            case CardType.HOTEL:
-                return <FaConciergeBell color="#0f68bd"/>
-            case CardType.SUBMMITED:
-                return <FaMoneyCheck color="#03a046"/>
-            case CardType.EVALUATING:
-                return <FaDiaspora />
-            case CardType.FOOD: 
-                return <FaUtensils />
-        }
+
+interface ContainerIconProps {
+    color: string;
+}
+const CardIcon: React.FC<Props> = ({ type }) => {
+    const theme = useTheme();
+    let icon: React.ReactNode;
+    let color: string = theme.typography.dark;
+    switch (type) {
+        case CardType.CREATED:
+            icon = <FaMoneyCheck />
+            break
+        case CardType.HOTEL:
+            icon = <FaConciergeBell/>
+            color = theme.icons.hotel
+            break
+        case CardType.SUBMMITED:
+            icon = <FaMoneyCheck />
+            color = theme.status.approved
+            break
+        case CardType.EVALUATING:
+            icon = <FaDiaspora />
+            break
+        case CardType.FOOD:
+            icon = <FaUtensils />
+            break
+        default:
+            color = theme.typography.dark;
+
     }
 
+
     return (
-        <ContainerIcon>{factoryIcon(type)}</ContainerIcon>
+        <ContainerIcon color={color}>{icon}</ContainerIcon>
     )
 }
 
-const ContainerIcon = styled.div`
+const ContainerIcon = styled.div<ContainerIconProps>`
     height: 59px;
     width: 59px;
     background-color: white;

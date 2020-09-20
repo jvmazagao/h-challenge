@@ -22,11 +22,20 @@ function App() {
     })
   }, [setInfo])
 
+  console.log({info})
+  
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Header>
-          {info.map((value: any) => <StatusLabel key={String(value.id)} status={value.status}/>)}
+          
+          {info.map((value: any) => (
+          <div key={String(value.id)}>
+            <CardIcon type={value.expenseTypeIcon}/>
+            <StatusLabel  status={value.status}/>
+          </div>
+          
+          ))}
         </Header>
       </div>
     </ThemeProvider>
