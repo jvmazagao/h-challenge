@@ -3,9 +3,12 @@ import './App.css';
 import Header from './components/Header';
 import { getTimelineInfo } from './api/TimelineApi';
 import { theme } from './theme/theme';
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components';
 import CardIcon from './components/CardIcon';
-import StatusLabel from './components/StatusLabel/StatusLabel'
+import StatusLabel from './components/StatusLabel/StatusLabel';
+import AttachmentButton from './components/AttachmentButton';
+import HeaderContainer from './containers/Header'
+import Dashboard from './pages/Dashboard';
 
 function App() {
   const [info, setInfo] = useState([]);
@@ -16,27 +19,20 @@ function App() {
   //   })
   // },[setInfo])
 
-  useEffect(() => {
-    getTimelineInfo().then(value => {
-      setInfo(value);
-    })
-  }, [setInfo])
+  // useEffect(() => {
+  //   getTimelineInfo().then(value => {
+  //     setInfo(value);
+  //   })
+  // }, [setInfo])
 
-  console.log({info})
+  // console.log({info})
   
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header>
-          
-          {info.map((value: any) => (
-          <div key={String(value.id)}>
-            <CardIcon type={value.expenseTypeIcon}/>
-            <StatusLabel  status={value.status}/>
-          </div>
-          
-          ))}
-        </Header>
+        <Dashboard>
+          <HeaderContainer />
+        </Dashboard>
       </div>
     </ThemeProvider>
 

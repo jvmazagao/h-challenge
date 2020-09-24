@@ -25,5 +25,8 @@ export const theme = {
         blue: '#e7f2fd',
         lightMarine: '#00d7ce',
         darkMarine: '#00c5fc'
+    },
+    dashboard: {
+        bg: '#053d4e',
     }
 }

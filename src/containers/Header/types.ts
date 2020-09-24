@@ -1,7 +1,10 @@
 
 
 interface Accountability {
+    amountOfPeople: number;
     quantity: number;
+    eventDate: number;
+    budgetForBreakfast: string;
 }
 
 interface Project {
@@ -18,11 +21,13 @@ interface Reviser {
 }
 interface CostCenters {
     percentage: number;
+    name: string;
     reviser: Reviser;
 }
 
 //todo static typing in propss
 export interface HeaderValues {
+    id: number,
     type: string;
     purpose: string;
     title: string;
@@ -31,5 +36,5 @@ export interface HeaderValues {
     project: Project;
     accountabilityExtraInfo: Accountability; 
     costCenters: Array<CostCenters>;
-
+    justification: string;
 }

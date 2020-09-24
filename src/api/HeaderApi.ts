@@ -13,6 +13,7 @@ export const getHeaderInfo = async () => {
     const {data} = await axios.get('/header')
     data.purpose = handlePurposeEnum(data.purpose)
     data.type = handleTypeEnum(data.type);
+    data.accountabilityExtraInfo.budgetForBreakfast = handleBreakfast(data.accountabilityExtraInfo.budgetForBreakfast);
     return {
         ...data
     }
@@ -31,4 +32,8 @@ const handleTypeEnum = (value: string) => {
         case HeaderType.REFUND:
             return 'Reembolso';
     }
+}
+
+const handleBreakfast = (value: string) => {
+ return value === null ? 'Não' : value;   
 }
