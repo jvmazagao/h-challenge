@@ -8,9 +8,19 @@ export const theme = {
         dark: '#0f68bd',
         light: '#ffffff',
         label: '#d0d3d6',
-        font: {
-            fontSize: '12px'
+        title: {
+            size: '20px',
+            weight: '500',
+        },
+        primary: {
+            size: '16px',
+            weight: 500,
+        },
+        secondary: {
+            size: '14px',
+            weight: 300
         }
+
     },
     details: {
         color: '#51c1c3'
@@ -27,6 +37,7 @@ export const theme = {
         darkMarine: '#00c5fc'
     },
     dashboard: {
-        bg: '#053d4e',
+        bgGreen: '#053d4e',
+        bgLight: '#f4f6fa',
     }
 }

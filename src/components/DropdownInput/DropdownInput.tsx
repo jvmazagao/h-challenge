@@ -20,7 +20,7 @@ const DropdownInput: React.FC<Props> = ({ value }) => {
 
 const Container = styled.div`
   width: 300px;
-  margin-bottom:  30px;
+  margin-bottom:  20px;
 `
 
 const Input = styled.select`

@@ -5,14 +5,23 @@ import Header from '../../components/Header'
 import { getHeaderInfo } from '../../api/HeaderApi';
 import { parseDate } from '../../utils/date';
 import DropdownInput from '../../components/DropdownInput';
+import { useTheme } from '../../theme/hooks';
 
-interface ContentProps {
-  color: string,
-  fontSize: string,
-  fontWeight: number,
+interface DataProps {
+  align: string;
+}
+
+interface TextProps {
+  fontSize?: string;
+}
+
+interface ContainerProps {
+  color: string;
+  width: string;
 }
 
 const HeaderContainer: React.FC = () => {
+  const theme = useTheme();
   const [header, setHeader] = useState<HeaderValues>();
 
   useEffect(() => {
@@ -24,216 +33,133 @@ const HeaderContainer: React.FC = () => {
   return (
 
     <Header>
-      <Container>
-        {header &&
-          (
-            <>
-              <GridColumn>
-                <Line
-                  style={{marginBottom: '15px'}}
-                >
-                  <Label
-                    color={'#fff'}
-                    fontSize={'30px'}
-                    fontWeight={500}
-                  >{header.type} #{header.id} - {header.title}
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Nome:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    >{header.collaborator.name}
-                    </Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    E-mail:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    >{header.collaborator.email}
-                    </Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Justificativa:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    > {header.justification}</Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Finalidade:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    > {header.purpose}</Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Data:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    > {parseDate(header.accountabilityExtraInfo.eventDate)}</Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Justificativa:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    > {header.justification}</Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Quantidade:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    > {header.accountabilityExtraInfo.amountOfPeople} pessoas</Title>
-                  </Label>
-                </Line>
-                <Line>
-                  <Label
-                    color={'#fff'}
-                    fontSize={'18px'}
-                    fontWeight={300}
-                  >
-                    Inclui café da manha:
-                <Title
-                      color={'#fff'}
-                      fontSize={'18px'}
-                      fontWeight={500}
-                    > {header.accountabilityExtraInfo.budgetForBreakfast}</Title>
-                  </Label>
-                </Line>
-              </GridColumn>
-              <GridColumn>
-                <Box>
-                  <Colunm>
-                    <Line>
-                      <Title
-                        color={'#fff'}
-                        fontSize={'18px'}
-                        fontWeight={300}>
-                        Atribuir analista
-                      </Title>
-                      <DropdownInput value="analyst"/>
-                    </Line>
-                    <Line>
-                      <Title
-                        color={'#fff'}
-                        fontSize={'18px'}
-                        fontWeight={300}
-                      >
-                      Centro de custo
-                      </Title>
-                      <Label
-                        color={'#fff'}
-                        fontSize={'18px'}
-                        fontWeight={500}
-                      >
-                        {header.costCenters.map(center => {
-                          return `${center.percentage}% -  ${center.reviser.name}`
-                        })}
-                      </Label>
-                    </Line>
-
-
-                  </Colunm>
-                </Box>
-              </GridColumn>
-            </>
-          )
-        }
-      </Container>
-
+      {header &&
+        (
+          <>
+            <Container
+              color={theme.typography.light}
+              width={"70%"}
+            >
+              <Title fontSize={theme.typography.title.size}>
+                {header.type} #{header.id} - {header.title}
+              </Title>
+              <TableContainer>
+                <Table>
+                  <Row>
+                    <TitleData align="right">Nome</TitleData>
+                    <Data align="left">{header.collaborator.name}</Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">E-mail</TitleData>
+                    <Data align="left">{header.collaborator.email}</Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">Justificativa</TitleData>
+                    <Data align="left">{header.justification}</Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">Finalidade</TitleData>
+                    <Data align="left">{header.purpose}</Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">Projeto</TitleData>
+                    <Data align="left">{header.project.title}</Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">Data</TitleData>
+                    <Data align="left">{parseDate(header.accountabilityExtraInfo.eventDate)}</Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">Quantidade</TitleData>
+                    <Data align="left">{header.accountabilityExtraInfo.amountOfPeople > 1 ? 'pessoas' : 'pessoa'} </Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="right">Inclui café da manhã</TitleData>
+                    <Data align="left">{header.accountabilityExtraInfo.budgetForBreakfast}</Data>
+                  </Row>
+                </Table>
+              </TableContainer>
+            </Container>
+            <Container
+              color={theme.typography.light}
+              width={"30%"}
+            >
+              <BoxContainer>
+                <TableContainer>
+                  <Row>
+                    <TitleData align="left">Atribuir analista</TitleData>
+                  </Row>
+                  <Row>
+                    <Data align="left">
+                      <DropdownInput value="test" />
+                    </Data>
+                  </Row>
+                  <Row>
+                    <TitleData align="left">Centro de Custo</TitleData>
+                  </Row>
+                  <Row>
+                    <Data align="left"> {header.costCenters.map(center => {
+                      return `${center.percentage}% -  ${center.reviser.name}`
+                    })}</Data>
+                  </Row>
+                </TableContainer>
+              </BoxContainer>
+            </Container>
+          </>
+        )
+      }
     </Header>
   )
 }
 
-const Label = styled.span<ContentProps>`
+const Container = styled.div<ContainerProps>`
+   display: flex;
+   flex-direction: column;
+   color: ${props => props.color};
+   width: ${props => props.width};
+`
+
+const TableContainer = styled.div`
+  display: grid;
+`
+
+const Table = styled.table`
+    width: 300px;
+`
+
+const Row = styled.tr`
+      padding: 0 20px 5px 0;
+      font-size: 14px;
+`
+
+const Data = styled.td<DataProps>`
+      width: 70%;
+      font-size: 14px;
+      text-align: ${props => props.align};
+      font-weight: 500;
+`
+
+const TitleData = styled(Data)`
+      width: 30%;
+      padding: 0 20px 5px 0;
+      text-align: ${props => props.align};
+      font-weight: 300;
+`
+
+const Title = styled.h2<TextProps>`
+    margin-bottom: 15px;
+    margin-left: 5px;
     font-size: ${props => props.fontSize};
-    line-height: 20px;
-    font-weight: ${props => props.fontWeight};
-    color: ${props => props.color};
-`
-const Title = styled(Label)`
-  text-align: start
+    text-align: start;
 `
 
-const Line = styled.div`
-  display: grid;
-  grid-template-rows: 30px;
-  justify-content: flex-start;
-`
-const Container = styled.div`
-  display: grid;
-  grid-gap: 30px;
-  display: grid;
-  grid-template-columns: 800px 300px;
-`
-
-const GridColumn = styled.div`
-  
-`
-
-const Colunm = styled.div`
-  padding-left: 20px;
-`
-
-const Box = styled.div`
+const BoxContainer = styled.div`
   display: flex;
   align-items: center;
   margin-top: 80px;
-  height: 200px;
+  height: 160px;
   border-left: 3px solid #fff;
+  padding: 15px;
 `
 
 export default HeaderContainer;
