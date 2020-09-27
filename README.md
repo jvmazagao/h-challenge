@@ -1,8 +1,24 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to run this project
+1. First of all, you need to clone this repo.
+2. `yarn install` or `npm install` to install all dependencies
+3. `yarn start` or `npm start` to run the project localy.
+
+## How to run test suit of this project
+1. `yarn test` or `npm run test` to start the test suit
+1.1. If you want the coverage run `yarn test:coverage`
+
+## How to lint the code?
+1. `yarn lint` or `npm run lint`
+1.1. If you want to fix everything just run `yarn lint --fix` or `npm run lint --fix`
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+Script to install all dependencies in the machine. 
 
 ### `yarn start`
 

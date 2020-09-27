@@ -4,16 +4,22 @@ import {useTheme} from '../../theme/hooks/index'
 
 interface Props {
     children: React.ReactNode;
+    url: string;
 }
 
 interface ContainerProps {
-    color: string
+    color: string;
 }
 
-const AttachmentButton: React.FC<Props> = ({children}) => {
+const AttachmentButton: React.FC<Props> = ({children, url}) => {
     const theme = useTheme();
+    
+    const downloadFile = (url: string) => {
+        window.open(url);
+    }
+
     return (
-        <Container color={theme.details.color}>{children}</Container>
+        <Container onClick={() => downloadFile(url)} color={theme.details.color}>{children}</Container>
     )
 }
 
@@ -24,8 +30,8 @@ const Container = styled.div<ContainerProps>`
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    color: ${props => props.color}
-
+    color: ${props => props.color};
+    cursor: pointer;
 `
 
 export default AttachmentButton;

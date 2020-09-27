@@ -26,7 +26,6 @@ const TimelineContainer: React.FC = () => {
         })
     }, [setCards]);
 
-    console.log({ cards });
     //todo: fix the tbody and thead to be more readable.
     //todo: fix the link for download/open another tab for receipt view.
     return (
@@ -35,7 +34,7 @@ const TimelineContainer: React.FC = () => {
                 (card: CardValues) => (
                     <Container>
                         <CardTimeline color={theme.card.timeline}>
-                            <CardIcon type={card.expenseTypeIcon} date={card.cardDate}/>
+                            <CardIcon type={card.expenseTypeIcon} date={card.cardDate} />
                             <Table>
                                 <Row>
                                     <DataTitle align="left">
@@ -49,39 +48,46 @@ const TimelineContainer: React.FC = () => {
                                     </DataReference>
                                 </Row>
 
-                                {card.amountSpent && card.amountTotal && (
-                                    <Row>
-                                        <DataTitle align="left">
-                                            Valor
+                                <Row>
+                                    {card.amountSpent && card.amountTotal && (
+                                        <>
+                                            <DataTitle align="left">
+                                                Valor
                                         </DataTitle>
-                                        <Data align="left">
-                                            {card.currencyCode} {card.amountSpent}
-                                        </Data>
-                                        <DataReference align="left">
-                                            Valor da nota: {card.currencySymbol}{card.currencyCode} {card.amountTotal}
-                                        </DataReference>
-                                    </Row>
-                                )}
-                                {card.status && (
-                                    <Row>
-                                        <DataTitle align='left'>
-                                            Status
+                                            <Data align="left">
+                                                {card.currencyCode} {card.amountSpent}
+                                            </Data>
+                                            <DataReference align="left">
+                                                Valor da nota: {card.currencySymbol}{card.currencyCode} {card.amountTotal}
+                                            </DataReference>
+                                        </>
+                                    )}
+                                </Row>
+                                <Row>
+                                    {card.status && (
+                                        <>
+                                            <DataTitle align='left'>
+                                                Status
                                         </DataTitle>
-                                        <Data align='center'>
-                                            <StatusTimeline status={card.status} />
-                                        </Data>
-                                    </Row>
-                                )
-                                }
+                                            <Data align='center'>
+                                                <StatusTimeline status={card.status} />
+                                            </Data>
+                                        </>
+                                    )
+                                    }
+                                </Row>
 
-                            {card.resourceUrl && (
-                            <Row>
-                                <Data align='left'>
-                                    <AttachmentButton>
-                                        <FaReceipt /> <Receipt> Ver recibo </Receipt>
-                                    </AttachmentButton>
-                                </Data>
-                            </Row>)}
+                                <Row>
+
+                                    {card.resourceUrl && (
+                                        <Data align='left'>
+                                            <AttachmentButton url={card.resourceUrl}>
+                                                <FaReceipt /> <Receipt> Ver recibo </Receipt>
+                                            </AttachmentButton>
+                                        </Data>
+                                    )}
+                                </Row>
+
                             </Table>
 
                         </CardTimeline>
@@ -106,9 +112,8 @@ const CardTimeline = styled(Card) <CardTimelineProps>`
 `
 
 const Table = styled.table`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
     padding-left: 30px;
     padding-right: 50px;
     align-items: center;
