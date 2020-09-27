@@ -29,15 +29,20 @@ export const theme = {
         hotel: '#d0d3d6',
     },
     background: {
-        gray: '#f0f3f7',
-        green: '#e6fff0',
-        red: '#fbeaea',
-        blue: '#e7f2fd',
         lightMarine: '#00d7ce',
         darkMarine: '#00c5fc'
     },
     dashboard: {
         bgGreen: '#053d4e',
         bgLight: '#f4f6fa',
+    },
+    card: {
+        timeline: '#fff',
+        bg: {
+            gray: '#f0f3f7',
+            green: '#e6fff0',
+            red: '#fbeaea',
+            blue: '#e7f2fd',
+        }
     }
 }

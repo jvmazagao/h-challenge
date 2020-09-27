@@ -1,6 +1,6 @@
 import { axios } from '../config/AxiosConfig';
 
-enum CardType {
+export enum CardType {
     EXPENSE = 'EXPENSE',
     ACCOUNTABILITY_SUBMITTED = 'ACCOUNTABILITY_SUBMITTED',
     EVALUATION = 'EVALUATION',
@@ -26,18 +26,24 @@ const handleTypeCard = (value: string) => {
     switch (value) {
         case CardType.ACCOUNTABILITY_CREATED:
             return {
+                card: CardType.ACCOUNTABILITY_CREATED,
                 type: 'Depesas criadas',
                 expenseTypeIcon: 'check-created'
             };
         case CardType.ACCOUNTABILITY_SUBMITTED:
             return {
+                card: CardType.ACCOUNTABILITY_SUBMITTED,
                 type: 'Transferência de valor para o(a) Trooper',
                 expenseTypeIcon: 'check-submitted',
             };
         case CardType.EXPENSE:
-            return { type: 'Despesa' }
+            return { 
+                card: CardType.EXPENSE,
+                type: 'Despesa' 
+            }
         case CardType.EVALUATION:
             return {
+                card: CardType.EVALUATION,
                 type: 'Aprovação em Andamento',
                 expenseTypeIcon: 'diaspora'
             }

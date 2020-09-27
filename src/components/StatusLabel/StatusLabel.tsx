@@ -17,8 +17,6 @@ enum Status {
     REJECTED = 'REJECTED',
 }
 
-
-
 const StatusLabel: React.FC<Props> = ({status}) => {
     const theme = useTheme();
     let color;
@@ -66,7 +64,7 @@ const CardLabel = styled.div<ContainerProps>`
 `
 
 const StatusContent = styled.span`
-    font-size: ${props => props.theme.typography.font.fontSize}
+    font-size: 14px;
 `
 
 export default StatusLabel;
