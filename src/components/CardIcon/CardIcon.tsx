@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {useTheme} from '../../theme/hooks'
+import { useTheme } from '../../theme/hooks'
 import { FaUtensils, FaConciergeBell, FaMoneyCheck, FaDiaspora } from 'react-icons/fa';
-
+import { parseDate } from '../../utils/date';
 enum CardType {
     FOOD = 'utensils',
     HOTEL = 'concierge-bell',
@@ -13,13 +13,14 @@ enum CardType {
 
 interface Props {
     type: string;
+    date: number;
 }
 
 interface ContainerIconProps {
     color: string;
     bg?: string;
 }
-const CardIcon: React.FC<Props> = ({ type }) => {
+const CardIcon: React.FC<Props> = ({ type, date }) => {
     const theme = useTheme();
     let icon: React.ReactNode;
     let color: string = theme.typography.dark;
@@ -31,7 +32,7 @@ const CardIcon: React.FC<Props> = ({ type }) => {
             bg = theme.card.bg.blue;
             break
         case CardType.HOTEL:
-            icon = <FaConciergeBell/>
+            icon = <FaConciergeBell />
             color = theme.icons.hotel;
             bg = theme.card.bg.gray;
             break
@@ -56,7 +57,15 @@ const CardIcon: React.FC<Props> = ({ type }) => {
 
 
     return (
-        <ContainerIcon color={color} bg={bg}>{icon}</ContainerIcon>
+        <Container>
+            <ContainerIcon color={color} bg={bg}>
+                {icon}
+            </ContainerIcon>
+            <DateContent>
+                {parseDate(date)}
+            </DateContent>
+        </Container>
+
     )
 }
 
@@ -69,6 +78,19 @@ const ContainerIcon = styled.div<ContainerIconProps>`
     align-items: center;
     justify-content: center;
     color: ${props => props.color};
+`
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+`
+
+const DateContent = styled.span`
+    margin-top: 10px;
+    font-size: 12px;
+    color: #545b64;
 `
 
 export default CardIcon;

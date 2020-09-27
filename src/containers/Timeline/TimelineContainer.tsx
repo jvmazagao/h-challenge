@@ -4,7 +4,7 @@ import { FaReceipt } from 'react-icons/fa';
 import { getTimelineInfo } from '../../api/TimelineApi';
 import Card from '../../components/Card';
 import CardIcon from '../../components/CardIcon';
-import StatusLabel from '../../components/StatusLabel'
+import StatusTimeline from '../../components/StatusTimeline';
 import AttachmentButton from '../../components/AttachmentButton';
 import { useTheme } from '../../theme/hooks';
 import { CardValues } from './type';
@@ -35,7 +35,7 @@ const TimelineContainer: React.FC = () => {
                 (card: CardValues) => (
                     <Container>
                         <CardTimeline color={theme.card.timeline}>
-                            <CardIcon type={card.expenseTypeIcon} />
+                            <CardIcon type={card.expenseTypeIcon} date={card.cardDate}/>
                             <Table>
                                 <Row>
                                     <DataTitle align="left">
@@ -68,7 +68,7 @@ const TimelineContainer: React.FC = () => {
                                             Status
                                         </DataTitle>
                                         <Data align='center'>
-                                            <StatusLabel status={card.status} />
+                                            <StatusTimeline status={card.status} />
                                         </Data>
                                     </Row>
                                 )
@@ -78,7 +78,7 @@ const TimelineContainer: React.FC = () => {
                             <Row>
                                 <Data align='left'>
                                     <AttachmentButton>
-                                        <FaReceipt /> <span> Ver recibo </span>
+                                        <FaReceipt /> <Receipt> Ver recibo </Receipt>
                                     </AttachmentButton>
                                 </Data>
                             </Row>)}
@@ -138,6 +138,10 @@ const DataTitle = styled(Data)`
 const DataReference = styled(Data)`
     color: #d0d3d9;
     font-size: 12px;
+`
+
+const Receipt = styled.span`
+    margin-left: 5px;
 `
 
 export default TimelineContainer;

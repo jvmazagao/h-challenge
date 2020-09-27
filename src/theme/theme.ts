@@ -40,9 +40,14 @@ export const theme = {
         timeline: '#fff',
         bg: {
             gray: '#f0f3f7',
+            mediumGray: '#d0d3d6',
             green: '#e6fff0',
             red: '#fbeaea',
             blue: '#e7f2fd',
         }
+    },
+    default: {
+        text: '#053d4e',
+        bg: '#f0f3f7',
     }
 }

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import StatusCard from '../StatusCard';
 import {useTheme} from '../../theme/hooks'
 import styled from 'styled-components';
 
 interface Props {
     status: string;
-}
-
-interface ContainerProps {
-    color: string;
-    bg: string;
 }
 
 enum Status {
@@ -17,7 +13,7 @@ enum Status {
     REJECTED = 'REJECTED',
 }
 
-const StatusLabel: React.FC<Props> = ({status}) => {
+const StatusTimeline: React.FC<Props> = ({status}) => {
     const theme = useTheme();
     let color;
     let content;
@@ -44,27 +40,16 @@ const StatusLabel: React.FC<Props> = ({status}) => {
 
     console.log(status)
     return (
-        <CardLabel color={color} bg={bg} >
+        <StatusCard color={color} bg={bg} >
             <StatusContent color={color} theme={theme}>
                 {content}
             </StatusContent> 
-        </CardLabel>
+        </StatusCard>
     )
 }
-
-const CardLabel = styled.div<ContainerProps>`
-    width: 85px;
-    height: 24px;
-    border-radius: 12px;
-    border: 1px solid ${props => props.color};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${props => props.bg};
-`
 
 const StatusContent = styled.span`
     font-size: 14px;
 `
 
-export default StatusLabel;
+export default StatusTimeline;
