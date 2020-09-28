@@ -1,25 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useTheme } from '../../theme/hooks'
 import { FaUtensils, FaConciergeBell, FaMoneyCheck, FaDiaspora } from 'react-icons/fa';
 import { parseDate } from '../../utils/date';
-enum CardType {
-    FOOD = 'utensils',
-    HOTEL = 'concierge-bell',
-    CREATED = 'check-created',
-    SUBMMITED = 'check-submitted',
-    EVALUATING = 'diaspora',
-}
-
-interface Props {
-    type: string;
-    date: number;
-}
-
-interface ContainerIconProps {
-    color: string;
-    bg?: string;
-}
+import {Props, CardType, ContainerIconProps} from './types';
 const CardIcon: React.FC<Props> = ({ type, date }) => {
     const theme = useTheme();
     let icon: React.ReactNode;
@@ -27,27 +11,27 @@ const CardIcon: React.FC<Props> = ({ type, date }) => {
     let bg: string = theme.card.timeline;
     switch (type) {
         case CardType.CREATED:
-            icon = <FaMoneyCheck />
+            icon = <FaMoneyCheck data-testid="money"/>
             color = theme.typography.dark;
             bg = theme.card.bg.blue;
             break
         case CardType.HOTEL:
-            icon = <FaConciergeBell />
+            icon = <FaConciergeBell data-testid="concierge-bell"/>
             color = theme.icons.hotel;
             bg = theme.card.bg.gray;
             break
         case CardType.SUBMMITED:
-            icon = <FaMoneyCheck />
+            icon = <FaMoneyCheck data-testid="money-green"/>
             color = theme.status.approved
             bg = theme.card.bg.green;
             break
         case CardType.EVALUATING:
-            icon = <FaDiaspora />
+            icon = <FaDiaspora data-testid="diaspora"/>
             color = theme.typography.dark;
             bg = theme.card.bg.blue;
             break
         case CardType.FOOD:
-            icon = <FaUtensils />
+            icon = <FaUtensils data-testid="utensils"/>
             color = theme.typography.dark;
             bg = theme.card.bg.blue;
             break

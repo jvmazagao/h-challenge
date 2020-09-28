@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import StatusCard from '../StatusCard';
 import {useTheme} from '../../theme/hooks'
 import styled from 'styled-components';
@@ -38,7 +38,6 @@ const StatusTimeline: React.FC<Props> = ({status}) => {
 
     }
 
-    console.log(status)
     return (
         <StatusCard color={color} bg={bg} >
             <StatusContent color={color} theme={theme}>

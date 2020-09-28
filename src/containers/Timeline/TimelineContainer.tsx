@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaReceipt } from 'react-icons/fa';
-import { getTimelineInfo } from '../../api/TimelineApi';
+import { getTimelineInfo } from '../../api/Timeline/TimelineApi';
 import Card from '../../components/Card';
 import CardIcon from '../../components/CardIcon';
 import StatusTimeline from '../../components/StatusTimeline';

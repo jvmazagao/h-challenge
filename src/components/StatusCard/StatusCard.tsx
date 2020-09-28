@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import {useTheme} from '../../theme/hooks'
 import styled from 'styled-components';
 interface ContainerProps {
     color: string;

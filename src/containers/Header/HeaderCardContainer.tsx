@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { HeaderValues } from './types';
 import Header from '../../components/Header'
-import { getHeaderInfo } from '../../api/HeaderApi';
+import { getHeaderInfo } from '../../api/Header/HeaderApi';
 import { parseDate } from '../../utils/date';
-import DropdownInput from '../../components/DropdownInput';
+import SimpleInput from '../../components/SimpleInput';
 import { useTheme } from '../../theme/hooks';
 
 interface DataProps {
@@ -23,13 +23,12 @@ interface ContainerProps {
 const HeaderContainer: React.FC = () => {
   const theme = useTheme();
   const [header, setHeader] = useState<HeaderValues>();
-
+  const [analyst, setAnalyst] = useState<string>('');
   useEffect(() => {
     getHeaderInfo().then(value => {
       setHeader(value)
     })
   }, [setHeader])
-  console.log({ header })
   return (
 
     <Header>
@@ -91,7 +90,7 @@ const HeaderContainer: React.FC = () => {
                   </Row>
                   <Row>
                     <Data align="left">
-                      <DropdownInput value="test" />
+                      <SimpleInput value={analyst} setValue={setAnalyst} placeholder='Atribuir Analista'/>
                     </Data>
                   </Row>
                   <Row>

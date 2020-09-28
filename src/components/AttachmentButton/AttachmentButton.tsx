@@ -1,15 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {useTheme} from '../../theme/hooks/index'
+import {Props, ContainerProps} from './types';
 
-interface Props {
-    children: React.ReactNode;
-    url: string;
-}
-
-interface ContainerProps {
-    color: string;
-}
 
 const AttachmentButton: React.FC<Props> = ({children, url}) => {
     const theme = useTheme();

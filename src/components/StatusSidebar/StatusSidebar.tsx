@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import StatusCard from '../StatusCard';
 import {useTheme} from '../../theme/hooks';
 import {Props, Status as StatusFactory} from './types';

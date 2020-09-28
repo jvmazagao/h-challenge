@@ -14,7 +14,7 @@ const SidebarContainer = () => {
             setSideBarItems(items)
         })
     }, [setSideBarItems]);
-    console.log(typeof sidebarItems);
+    
     return (
         <Sidebar>
             { sidebarItems && sidebarItems.map(item => (

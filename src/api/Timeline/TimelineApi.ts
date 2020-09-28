@@ -1,4 +1,4 @@
-import { axios } from '../config/AxiosConfig';
+import { axios } from '../../config/AxiosConfig';
 
 export enum CardType {
     EXPENSE = 'EXPENSE',

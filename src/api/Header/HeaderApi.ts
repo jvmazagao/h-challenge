@@ -1,4 +1,4 @@
-import { axios } from '../config/AxiosConfig';
+import { axios } from '../../config/AxiosConfig';
 
 enum HeaderPurpose {
     FRATERNIZATION = 'FRATERNIZATION'
@@ -33,4 +33,4 @@ const handleTypeEnum = (value: string) => {
   }
 };
 
-const handleBreakfast = (value: string) => (value === null ? 'Não' : value);
+const handleBreakfast = (value: string) => (value === null ? 'Não' : 'Sim');
