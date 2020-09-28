@@ -55,7 +55,7 @@ export const HeaderMock = {
     ]
 }
 
-export const HeaderMockYes = {
+export const HeaderMultiplePeople = {
     "id": 756,
     "createdOn": 1588613238775,
     "title": "-----teste",
@@ -83,7 +83,7 @@ export const HeaderMockYes = {
         "arrivalOn": null,
         "budgetForBreakfast": 'Test',
         "eventDate": 1589425200000,
-        "amountOfPeople": 1,
+        "amountOfPeople": 3,
         "requestedCurrency": null,
         "amountRequested": null,
         "destination": null

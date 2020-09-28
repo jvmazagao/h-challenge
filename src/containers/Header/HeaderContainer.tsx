@@ -70,7 +70,7 @@ const HeaderContainer: React.FC = () => {
                   </Row>
                   <Row>
                     <TitleData align="right">Quantidade</TitleData>
-                    <Data align="left">{header.accountabilityExtraInfo.amountOfPeople > 1 ? 'pessoas' : 'pessoa'} </Data>
+                    <Data align="left">{header.accountabilityExtraInfo.amountOfPeople}{header.accountabilityExtraInfo.amountOfPeople > 1 ? 'pessoas' : 'pessoa'} </Data>
                   </Row>
                   <Row>
                     <TitleData align="right">Inclui café da manhã</TitleData>
@@ -90,7 +90,7 @@ const HeaderContainer: React.FC = () => {
                   </Row>
                   <Row>
                     <Data align="left">
-                      <SimpleInput value={analyst} setValue={setAnalyst} placeholder='Atribuir Analista'/>
+                      <SimpleInput value={analyst} setValue={setAnalyst} placeholder='Atribuir Analista' />
                     </Data>
                   </Row>
                   <Row>

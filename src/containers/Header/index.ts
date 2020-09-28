@@ -1,2 +1,2 @@
-import HeaderContainer from './HeaderCardContainer';
+import HeaderContainer from './HeaderContainer';
 export default HeaderContainer;

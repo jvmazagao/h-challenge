@@ -22,10 +22,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.ts src/**/*.tsx",
-    "test:coverage": "react-scripts test --coverage --watchAll"
+    "test:coverage": "react-scripts test --env=jsdom-fourteen  --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": "react-app"
